@@ -18,7 +18,7 @@ body {
   font-family: sans-serif;
 }
 
-/* Mobile responsive helpers */
+/* Mobile responsive */
 @media (max-width: 768px) {
   .hero-section {
     flex-direction: column-reverse !important;
@@ -47,8 +47,5 @@ body {
   }
   .nav-bar {
     padding: 1rem !important;
-  }
-  .stats-img {
-    width: 100% !important;
   }
 }
