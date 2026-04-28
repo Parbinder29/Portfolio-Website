@@ -1,5 +1,4 @@
 'use client'
-import Image from 'next/image'
 
 export default function Hero() {
   return (
@@ -38,12 +37,10 @@ export default function Hero() {
           overflow: 'hidden', border: '4px solid #9333ea',
           boxShadow: '0 0 40px rgba(147,51,234,0.3)',
         }}>
-          <Image
-            src="/profile.jpeg"
+          <img
+            src="/profpic.jpeg"
             alt="Parbinder Singh"
-            width={280} height={280}
             style={{ objectFit: 'cover', width: '100%', height: '100%' }}
-            priority
           />
         </div>
       </div>
