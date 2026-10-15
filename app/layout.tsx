@@ -18,7 +18,6 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Parbinder Singh · AI, IoT & Web",
     description: "Multi-sensor fusion, a patented smart irrigation system and deep-learning waste classification.",
-    images: ["/portrait.webp"],
   },
 };
 
