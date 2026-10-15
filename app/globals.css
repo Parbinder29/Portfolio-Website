@@ -963,16 +963,6 @@ button {
   border-color: var(--accent);
   transform: rotate(45deg);
 }
-@media (max-width: 1000px) {
-  .skills {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-@media (max-width: 640px) {
-  .skills {
-    grid-template-columns: 1fr;
-  }
-}
 @media (max-width: 900px) {
   .row {
     grid-template-columns: 40px 1fr;
@@ -1251,4 +1241,16 @@ a.honour:hover .honour-cta svg {
 }
 .cta {
   position: relative;
+}
+
+/* skills grid: these must come after the base .skills rule */
+@media (max-width: 1000px) {
+  .skills {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 640px) {
+  .skills {
+    grid-template-columns: 1fr;
+  }
 }
