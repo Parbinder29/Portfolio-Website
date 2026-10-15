@@ -51,7 +51,7 @@ export const projects: {
     key: 'garbage',
     title: 'Garbage Classification',
     full: 'EfficientNetV2-B2 Waste Sorter',
-    category: 'Deep Learning — Sustainability',
+    category: 'Deep Learning — Edunet Internship 2025',
     metric: '91.4% test accuracy',
     desc:
       'Transfer learning on EfficientNetV2-B2 sorts waste photos into six classes, with class weighting for an uneven dataset and a Gradio app to try it live.',
@@ -68,6 +68,13 @@ export const experience = [
     desc:
       'Frontend for a growing startup: built new pages, improved existing features and smoothed out the user experience. Also built UVfIN, the group’s internal finance dashboard, with Next.js and Supabase.',
     href: 'https://drive.google.com/file/d/18W3ZLyUwHn-VTx_mHZYTYQJIUQB-heQL/view?usp=sharing',
+  },
+  {
+    org: 'Edunet Foundation',
+    role: 'AI & Data Analytics Intern · Jun – Jul 2025',
+    desc:
+      'Four-week virtual internship on Artificial Intelligence and Data Analytics with a focus on green skills, under the Skills4Future program by AICTE, Shell India and Edunet Foundation. My Garbage Classification model was built during this program.',
+    href: 'https://drive.google.com/file/d/1HC-wEyQpcfhQtGN0uQs35GJNr5UWf7vy/view?usp=sharing',
   },
   {
     org: 'IIT Jammu',
