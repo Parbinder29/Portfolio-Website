@@ -1,24 +1,25 @@
 import Navbar from '@/components/Navbar'
 import Hero from '@/components/Hero'
-import Projects from '@/components/Projects'
-import Experience from '@/components/Experience'
-import Honours from '@/components/Honours'
 import Skills from '@/components/Skills'
-import Contact from '@/components/Contact'
 import Reveal from '@/components/Reveal'
+import { Work, Ticker, Experience, Honours, Cta, Footer } from '@/components/Sections'
 
 export default function Home() {
   return (
     <>
       <Navbar />
-      <Hero />
-      <main>
-        <Projects />
-        <Experience />
-        <Honours />
-        <Skills />
-      </main>
-      <Contact />
+      <div className="shell">
+        <main>
+          <Hero />
+          <Ticker />
+          <Work />
+          <Experience />
+          <Honours />
+          <Skills />
+          <Cta />
+        </main>
+        <Footer />
+      </div>
       <Reveal />
     </>
   )
