@@ -7,8 +7,8 @@
   --fg: #f4f1e8;
   --dim: #a7a397;
   /* the one accent colour — swap these two lines to re-theme the site */
-  --accent: #b7c9a3;
-  --accent-rgb: 183 201 163;
+  --accent: #9ea35e;
+  --accent-rgb: 158 163 94;
   --cream: #efece2;
   --pad: clamp(1.25rem, 4vw, 3rem);
   --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
@@ -1236,4 +1236,19 @@ a.honour:hover .honour-cta svg {
     letter-spacing: 0.08em;
     white-space: nowrap;
   }
+}
+
+/* a faint paper grain over the olive surfaces, so they read as printed stock */
+.hero-panel::after,
+.cta::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.16;
+  mix-blend-mode: multiply;
+}
+.cta {
+  position: relative;
 }

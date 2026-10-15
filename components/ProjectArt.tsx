@@ -4,7 +4,7 @@ import type { ProjectKey } from './data'
    drawn in ink and the accent colour on paper. Motion is CSS, paused for reduced motion. */
 
 const INK = '#15140f'
-const LIME = '#b7c9a3' // overridden by the [data-ac] rule in globals.css
+const LIME = '#9ea35e' // overridden by the [data-ac] rule in globals.css
 const GREY = '#8d897c'
 const label = { fontFamily: 'var(--font-archivo), sans-serif', fontSize: 10, fontWeight: 700, letterSpacing: 1.2 }
 
