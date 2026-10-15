@@ -4,7 +4,7 @@ export const links = {
   github: 'https://github.com/Parbinder29',
   linkedin: 'https://linkedin.com/in/parbinder-singh-323792357',
   leetcode: 'https://leetcode.com/Parbinder2005',
-  resume: 'https://drive.google.com/file/d/1naDEuD-FDl0MDwGU_dKDxef1JD8g-HtD/view?usp=sharing',
+  resume: 'https://drive.google.com/file/d/10zfZ_hZHlmiUTLAr9c3oJft-RIZsOCTR/view?usp=sharing',
 }
 
 export type ProjectKey = 'atmsf' | 'irrigation' | 'garbage'
