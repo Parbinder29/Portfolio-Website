@@ -1,4 +1,4 @@
-import { HelloWord, Polaroid, CountUp } from './Interactive'
+import { HelloWord, Stamp, CountUp } from './Interactive'
 import { ArrowRight, ArrowUpRight, GitHub, LinkedIn, LeetCode, Mail } from './Icons'
 import { links } from './data'
 
@@ -10,9 +10,29 @@ export default function Hero() {
         <span className="sticker sticker-hero">Open to opportunities</span>
 
         <div className="hero-photo">
-          <Polaroid>
-            <img src="/portrait.webp" alt="Parbinder Singh" width={480} height={562} fetchPriority="high" decoding="async" />
-          </Polaroid>
+          <Stamp>
+            <div className="stamp">
+              <div className="stamp-inner">
+                <img src="/portrait.webp" alt="Parbinder Singh" width={480} height={562} fetchPriority="high" decoding="async" />
+                <div className="stamp-caption">
+                  <span>India</span>
+                  <span>AI · IoT · Web</span>
+                </div>
+              </div>
+            </div>
+            <svg className="postmark" viewBox="0 0 140 100" aria-hidden="true">
+              <defs>
+                <path id="pm-ring" d="M50 50 m-34 0 a34 34 0 1 1 68 0 a34 34 0 1 1 -68 0" />
+              </defs>
+              <circle cx="50" cy="50" r="44" fill="none" stroke="currentColor" strokeWidth="2" />
+              <circle cx="50" cy="50" r="25" fill="none" stroke="currentColor" strokeWidth="1.4" />
+              <text fontSize="9.5" fontWeight="700" letterSpacing="2.2" fill="currentColor">
+                <textPath href="#pm-ring">JAMMU · J&amp;K · INDIA ·</textPath>
+              </text>
+              <text x="50" y="55" textAnchor="middle" fontSize="15" fontWeight="900" fill="currentColor">PS</text>
+              <path d="M96 34 q8 -6 16 0 t16 0 t12 0 M96 50 q8 -6 16 0 t16 0 t12 0 M96 66 q8 -6 16 0 t16 0 t12 0" fill="none" stroke="currentColor" strokeWidth="2.2" />
+            </svg>
+          </Stamp>
           <div className="social-grid">
             <a href={links.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><LinkedIn /></a>
             <a href={links.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub"><GitHub /></a>
@@ -37,7 +57,7 @@ export default function Hero() {
           Junior Under Officer. Based in Jammu, India.
         </p>
         <div className="hero-btns" data-reveal>
-          <a href={links.resume} target="_blank" rel="noopener noreferrer" className="btn btn-lime">
+          <a href={links.resume} target="_blank" rel="noopener noreferrer" className="btn btn-accent">
             Resume <ArrowRight />
           </a>
           <a href="#work" className="btn btn-cream">

@@ -58,8 +58,8 @@ export function HelloWord({ text = 'Hello' }: { text?: string }) {
   )
 }
 
-/* The photo tilts toward the pointer in 3-D and settles back on leave. */
-export function Polaroid({ children }: { children: React.ReactNode }) {
+/* The photo stamp tilts toward the pointer in 3-D and settles back on leave. */
+export function Stamp({ children }: { children: React.ReactNode }) {
   const ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -88,7 +88,7 @@ export function Polaroid({ children }: { children: React.ReactNode }) {
   }, [])
 
   return (
-    <div ref={ref} className="polaroid">
+    <div ref={ref} className="stamp-wrap">
       {children}
     </div>
   )

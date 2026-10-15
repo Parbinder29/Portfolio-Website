@@ -1,10 +1,10 @@
 import type { ProjectKey } from './data'
 
 /* Cover art for each project: small diagrams of what the thing actually does,
-   drawn in ink and lime on paper. Motion is CSS, paused for reduced motion. */
+   drawn in ink and the accent colour on paper. Motion is CSS, paused for reduced motion. */
 
 const INK = '#15140f'
-const LIME = '#dcff29'
+const LIME = '#b7c9a3' // overridden by the [data-ac] rule in globals.css
 const GREY = '#8d897c'
 const label = { fontFamily: 'var(--font-archivo), sans-serif', fontSize: 10, fontWeight: 700, letterSpacing: 1.2 }
 
@@ -31,7 +31,7 @@ function Atmsf() {
             )}
             {s.name === 'THERMAL' && (
               <g>
-                <ellipse cx="70" cy={s.y + 32} rx="12" ry="20" fill={LIME} opacity="0.35" />
+                <ellipse cx="70" cy={s.y + 32} rx="12" ry="20" fill={LIME} data-ac="" opacity="0.35" />
                 <path d={`M30 ${s.y + 10} l80 40 M30 ${s.y + 30} l60 28 M50 ${s.y + 4} l60 36`} stroke="#3a3830" strokeWidth="3" />
               </g>
             )}
@@ -47,7 +47,7 @@ function Atmsf() {
         </g>
       ))}
       <rect x="192" y="118" width="74" height="64" rx="6" fill={INK} />
-      <text x="229" y="148" textAnchor="middle" style={{ ...label, fontSize: 13 }} fill={LIME}>ACAF</text>
+      <text x="229" y="148" textAnchor="middle" style={{ ...label, fontSize: 13 }} fill={LIME} data-ac="">ACAF</text>
       <text x="229" y="164" textAnchor="middle" style={{ ...label, fontSize: 8, letterSpacing: 0.6 }} fill="#bdb9aa">FUSION</text>
       <path className="flow" d="M266 150 H296" stroke={INK} strokeWidth="2" strokeDasharray="5 5" />
       <rect x="296" y="96" width="84" height="108" rx="4" fill="#dcd8ca" />
@@ -55,7 +55,7 @@ function Atmsf() {
       <circle cx="338" cy="128" r="6" fill={INK} />
       <path d="M338 134 v18 M338 152 l-6 13 M338 152 l6 13 M329 140 h18" stroke={INK} strokeWidth="3.5" />
       <rect className="bbox" x="320" y="114" width="36" height="58" fill="none" stroke={INK} strokeWidth="2" />
-      <rect x="320" y="104" width="44" height="11" fill={LIME} />
+      <rect x="320" y="104" width="44" height="11" fill={LIME} data-ac="" />
       <text x="323" y="112.5" style={{ ...label, fontSize: 7.5, letterSpacing: 0.3 }} fill={INK}>person .91</text>
       <text x="296" y="90" style={label} fill={INK}>OUTPUT</text>
     </svg>
@@ -73,8 +73,8 @@ function Irrigation() {
       {[60, 130, 270, 340].map((x, i) => (
         <g key={x} className="sprout" style={{ animationDelay: `${i * 0.4}s` }}>
           <path d={`M${x} 196 v-26`} stroke="#6b8f1a" strokeWidth="3" />
-          <path d={`M${x} 178 c-14 -2 -18 -12 -16 -18 c10 0 16 8 16 18 Z`} fill={LIME} stroke={INK} strokeWidth="1" />
-          <path d={`M${x} 184 c14 -2 18 -12 16 -18 c-10 0 -16 8 -16 18 Z`} fill={LIME} stroke={INK} strokeWidth="1" />
+          <path d={`M${x} 178 c-14 -2 -18 -12 -16 -18 c10 0 16 8 16 18 Z`} fill={LIME} data-ac="" stroke={INK} strokeWidth="1" />
+          <path d={`M${x} 184 c14 -2 18 -12 16 -18 c-10 0 -16 8 -16 18 Z`} fill={LIME} data-ac="" stroke={INK} strokeWidth="1" />
         </g>
       ))}
       <path d="M0 70 H400" stroke={INK} strokeWidth="6" />
@@ -90,11 +90,11 @@ function Irrigation() {
       <path d="M198 230 v24 M204 230 v24" stroke="#bdb9aa" strokeWidth="3" />
       <path d="M201 160 C201 130 170 140 170 112" stroke={INK} strokeWidth="2" fill="none" />
       <rect x="130" y="90" width="84" height="24" rx="3" fill={INK} />
-      <text x="172" y="106" textAnchor="middle" style={{ ...label, fontSize: 10 }} fill={LIME}>ESP32</text>
+      <text x="172" y="106" textAnchor="middle" style={{ ...label, fontSize: 10 }} fill={LIME} data-ac="">ESP32</text>
       <rect x="222" y="86" width="112" height="44" rx="4" fill={INK} />
-      <rect x="228" y="92" width="100" height="32" rx="2" fill="#2f3a0a" />
-      <text x="234" y="105" style={{ ...label, fontSize: 9, letterSpacing: 0.8 }} fill={LIME}>SOIL 34%</text>
-      <text className="blink" x="234" y="118" style={{ ...label, fontSize: 9, letterSpacing: 0.8 }} fill={LIME}>PUMP ON</text>
+      <rect x="228" y="92" width="100" height="32" rx="2" fill="#2a2a24" />
+      <text x="234" y="105" style={{ ...label, fontSize: 9, letterSpacing: 0.8 }} fill={LIME} data-ac="">SOIL 34%</text>
+      <text className="blink" x="234" y="118" style={{ ...label, fontSize: 9, letterSpacing: 0.8 }} fill={LIME} data-ac="">PUMP ON</text>
       <g transform="translate(340 30)">
         <path d="M-24 0 a24 24 0 0 1 48 0" fill="none" stroke="#d3cfc0" strokeWidth="7" />
         <path d="M-24 0 a24 24 0 0 1 10 -19.5" fill="none" stroke="#c2412d" strokeWidth="7" />
@@ -133,7 +133,7 @@ function Garbage() {
         const hot = name === 'PLASTIC'
         return (
           <g key={name}>
-            <rect x={x} y={y} width="108" height="90" rx="6" fill={hot ? LIME : '#dcd8ca'} stroke={hot ? INK : 'none'} strokeWidth="2" />
+            <rect x={x} y={y} width="108" height="90" rx="6" fill={hot ? LIME : '#dcd8ca'} data-ac={hot ? '' : undefined} stroke={hot ? INK : 'none'} strokeWidth="2" />
             <ClassIcon i={i} x={x + 54} y={y + 38} hot={hot} />
             <text x={x + 54} y={y + 80} textAnchor="middle" style={{ ...label, fontSize: 9 }} fill={INK}>{name}</text>
           </g>
@@ -142,9 +142,9 @@ function Garbage() {
       <rect className="scan" x="18" y="20" width="4" height="200" fill={INK} opacity="0.5" />
       <rect x="24" y="242" width="352" height="36" rx="6" fill={INK} />
       <text x="38" y="264" style={{ ...label, fontSize: 10 }} fill="#efece2">PREDICTION</text>
-      <text x="128" y="264" style={{ ...label, fontSize: 10 }} fill={LIME}>PLASTIC</text>
+      <text x="128" y="264" style={{ ...label, fontSize: 10 }} fill={LIME} data-ac="">PLASTIC</text>
       <rect x="200" y="255" width="130" height="10" rx="2" fill="#3a3830" />
-      <rect className="conf" x="200" y="255" width="126" height="10" rx="2" fill={LIME} />
+      <rect className="conf" x="200" y="255" width="126" height="10" rx="2" fill={LIME} data-ac="" />
       <text x="338" y="264" style={{ ...label, fontSize: 10 }} fill="#efece2">0.97</text>
     </svg>
   )

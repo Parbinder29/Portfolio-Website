@@ -6,7 +6,9 @@
   --line: #3a3832;
   --fg: #f4f1e8;
   --dim: #a7a397;
-  --lime: #dcff29;
+  /* the one accent colour — swap these two lines to re-theme the site */
+  --accent: #b7c9a3;
+  --accent-rgb: 183 201 163;
   --cream: #efece2;
   --pad: clamp(1.25rem, 4vw, 3rem);
   --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
@@ -52,17 +54,22 @@ button {
 }
 
 ::selection {
-  background: var(--lime);
+  background: var(--accent);
   color: var(--bg);
 }
 
 :focus-visible {
-  outline: 2px solid var(--lime);
+  outline: 2px solid var(--accent);
   outline-offset: 3px;
 }
 
-.lime {
-  color: var(--lime);
+.accent {
+  color: var(--accent);
+}
+
+/* SVG shapes that take the accent colour */
+[data-ac] {
+  fill: var(--accent);
 }
 
 /* the extra-wide display cut */
@@ -107,12 +114,12 @@ button {
 .btn:hover svg {
   transform: translateX(3px);
 }
-.btn-lime {
-  background: var(--lime);
+.btn-accent {
+  background: var(--accent);
   color: var(--bg);
 }
-.btn-lime:hover {
-  box-shadow: 0 10px 30px -8px rgba(220, 255, 41, 0.55);
+.btn-accent:hover {
+  box-shadow: 0 10px 30px -8px rgb(var(--accent-rgb) / 0.55);
 }
 .btn-cream {
   background: var(--cream);
@@ -128,7 +135,7 @@ button {
 }
 .btn-outline-ink:hover {
   background: var(--bg);
-  color: var(--lime);
+  color: var(--accent);
 }
 
 .text-link {
@@ -137,11 +144,11 @@ button {
   gap: 0.5rem;
   font-weight: 700;
   padding-bottom: 0.3rem;
-  background: linear-gradient(var(--lime), var(--lime)) 0 100% / 100% 2px no-repeat;
+  background: linear-gradient(var(--accent), var(--accent)) 0 100% / 100% 2px no-repeat;
   transition: color 0.25s;
 }
 .text-link:hover {
-  color: var(--lime);
+  color: var(--accent);
 }
 .text-link svg {
   transition: transform 0.25s var(--ease);
@@ -228,7 +235,7 @@ button {
   right: 0;
   bottom: -2px;
   height: 2px;
-  background: var(--lime);
+  background: var(--accent);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.3s var(--ease);
@@ -244,7 +251,7 @@ button {
 .nav-resume a {
   padding: 0.5rem 1rem;
   border-radius: 999px;
-  background: var(--lime);
+  background: var(--accent);
   color: var(--bg) !important;
   font-weight: 700;
 }
@@ -332,7 +339,7 @@ button {
     display: none;
   }
   .nav-links a.is-active {
-    color: var(--lime);
+    color: var(--accent);
   }
   .nav-resume {
     margin-top: 1rem;
@@ -353,7 +360,7 @@ button {
   position: relative;
   min-height: max(640px, 100svh);
   margin-left: -13px;
-  background: var(--lime);
+  background: var(--accent);
   color: var(--bg);
   overflow: hidden;
 }
@@ -386,7 +393,7 @@ button {
   top: 104px;
   right: clamp(1rem, 4vw, 3.5rem);
   background: var(--bg);
-  color: var(--lime);
+  color: var(--accent);
   transform: rotate(6deg);
   transition: transform 0.35s var(--ease);
   animation: pop 0.6s var(--ease) 0.7s backwards;
@@ -406,25 +413,64 @@ button {
   bottom: 2rem;
   width: clamp(200px, 21vw, 290px);
 }
-.polaroid {
-  --rot: -3deg;
-  padding: 10px 10px 34px;
-  background: var(--cream);
-  box-shadow: 0 30px 50px -20px rgba(0, 0, 0, 0.55);
+/* the portrait as a postage stamp: perforated edge cut with a mask */
+.stamp-wrap {
+  --rot: -4deg;
+  position: relative;
   transform: perspective(900px) rotate(var(--rot)) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
-  transition: transform 0.6s var(--ease), box-shadow 0.4s;
+  transition: transform 0.6s var(--ease), filter 0.4s;
+  filter: drop-shadow(0 22px 26px rgba(0, 0, 0, 0.35));
   will-change: transform;
 }
-.polaroid.is-tilting {
+.stamp-wrap.is-tilting {
   --rot: 0deg;
-  transition: transform 0.12s linear;
-  box-shadow: 0 40px 60px -20px rgba(0, 0, 0, 0.6);
+  transition: transform 0.12s linear, filter 0.4s;
+  filter: drop-shadow(0 30px 34px rgba(0, 0, 0, 0.42));
 }
-.polaroid img {
+.stamp {
+  --r: 6px;
+  padding: calc(2.2 * var(--r));
+  background: var(--cream);
+  -webkit-mask:
+    radial-gradient(var(--r), #0000 97%, #000) round calc(-1.5 * var(--r)) calc(-1.5 * var(--r)) / calc(3 * var(--r)) calc(3 * var(--r)),
+    linear-gradient(#000 0 0) no-repeat 50% / calc(100% - 3 * var(--r)) calc(100% - 3 * var(--r));
+  mask:
+    radial-gradient(var(--r), #0000 97%, #000) round calc(-1.5 * var(--r)) calc(-1.5 * var(--r)) / calc(3 * var(--r)) calc(3 * var(--r)),
+    linear-gradient(#000 0 0) no-repeat 50% / calc(100% - 3 * var(--r)) calc(100% - 3 * var(--r));
+}
+.stamp-inner {
+  padding: 6px;
+  border: 1px solid rgba(19, 18, 15, 0.35);
+}
+.stamp-inner img {
   width: 100%;
   height: auto;
-  aspect-ratio: 480 / 562;
+  aspect-ratio: 480 / 540;
   object-fit: cover;
+  object-position: 50% 20%;
+}
+.stamp-caption {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 8px 2px 0;
+  color: var(--bg);
+  font-size: 0.66rem;
+  font-weight: 800;
+  font-variation-settings: "wdth" 125;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.postmark {
+  position: absolute;
+  top: -26px;
+  right: -58px;
+  width: 128px;
+  color: rgba(19, 18, 15, 0.72);
+  transform: rotate(-14deg);
+  pointer-events: none;
+  font-family: var(--font-archivo), sans-serif;
+  mix-blend-mode: multiply;
 }
 .social-grid {
   position: absolute;
@@ -433,18 +479,18 @@ button {
   display: grid;
   grid-template-columns: repeat(2, 46px);
   background: var(--bg);
-  border: 1px solid var(--lime);
+  border: 1px solid var(--accent);
 }
 .social-grid a {
   display: grid;
   place-items: center;
   height: 46px;
-  color: var(--lime);
-  border: 1px solid rgba(220, 255, 41, 0.45);
+  color: var(--accent);
+  border: 1px solid rgb(var(--accent-rgb) / 0.45);
   transition: background 0.2s, color 0.2s;
 }
 .social-grid a:hover {
-  background: var(--lime);
+  background: var(--accent);
   color: var(--bg);
 }
 .hero-name {
@@ -508,7 +554,7 @@ button {
 .stats dd {
   font-size: clamp(2.4rem, 4.4vw, 3.8rem);
   line-height: 1;
-  color: var(--lime);
+  color: var(--accent);
   font-variant-numeric: tabular-nums;
 }
 .stats dt {
@@ -556,6 +602,7 @@ button {
   }
   .hero-name-role {
     font-size: 0.6rem;
+    max-width: 17ch;
   }
   .hero-text {
     padding: 3.5rem var(--pad);
@@ -602,7 +649,7 @@ button {
 }
 .ticker i {
   font-style: normal;
-  color: var(--lime);
+  color: var(--accent);
   -webkit-text-stroke: 0;
   font-size: 0.6em;
 }
@@ -622,7 +669,7 @@ button {
   font-weight: 700;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--lime);
+  color: var(--accent);
 }
 .h2 {
   margin: 0.8rem 0 1.2rem;
@@ -685,7 +732,7 @@ button {
   padding: 0.6rem 1.1rem;
   border-radius: 999px;
   background: var(--bg);
-  color: var(--lime);
+  color: var(--accent);
   font-weight: 700;
   font-size: 0.85rem;
   opacity: 0;
@@ -702,7 +749,7 @@ button {
   top: -14px;
   left: 22px;
   z-index: 2;
-  background: var(--lime);
+  background: var(--accent);
   color: var(--bg);
   transform: rotate(-3deg);
   font-size: 0.68rem;
@@ -721,10 +768,10 @@ button {
   transition: color 0.25s;
 }
 .card:hover .card-title {
-  color: var(--lime);
+  color: var(--accent);
 }
 .card-metric {
-  color: var(--lime);
+  color: var(--accent);
   font-weight: 700;
   font-size: 0.95rem;
 }
@@ -861,7 +908,7 @@ button {
   content: "";
   position: absolute;
   inset: 0 calc(-1 * var(--pad));
-  background: linear-gradient(90deg, rgba(220, 255, 41, 0.07), transparent 70%);
+  background: linear-gradient(90deg, rgb(var(--accent-rgb) / 0.07), transparent 70%);
   opacity: 0;
   transition: opacity 0.3s;
 }
@@ -872,7 +919,7 @@ button {
   position: relative;
 }
 .row-num {
-  color: var(--lime);
+  color: var(--accent);
   font-weight: 700;
 }
 .row-title {
@@ -882,7 +929,7 @@ button {
   transition: color 0.25s, transform 0.35s var(--ease);
 }
 .row:hover .row-title {
-  color: var(--lime);
+  color: var(--accent);
   transform: translateX(8px);
 }
 .row-role {
@@ -911,9 +958,9 @@ button {
   transition: background 0.25s, color 0.25s, transform 0.35s var(--ease), border-color 0.25s;
 }
 .row:hover .row-cta svg {
-  background: var(--lime);
+  background: var(--accent);
   color: var(--bg);
-  border-color: var(--lime);
+  border-color: var(--accent);
   transform: rotate(45deg);
 }
 @media (max-width: 1000px) {
@@ -961,7 +1008,7 @@ button {
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--lime);
+  color: var(--accent);
   transition: color 0.3s;
 }
 .honour-title {
@@ -986,7 +1033,7 @@ button {
   transition: transform 0.3s var(--ease);
 }
 a.honour:hover {
-  background: var(--lime);
+  background: var(--accent);
   color: var(--bg);
 }
 a.honour:hover .honour-tag,
@@ -1019,11 +1066,11 @@ a.honour:hover .honour-cta svg {
   transition: background 0.2s, color 0.2s, border-color 0.2s;
 }
 .filter button:hover {
-  border-color: var(--lime);
+  border-color: var(--accent);
 }
 .filter button[aria-pressed="true"] {
-  background: var(--lime);
-  border-color: var(--lime);
+  background: var(--accent);
+  border-color: var(--accent);
   color: var(--bg);
 }
 .skills {
@@ -1046,7 +1093,7 @@ a.honour:hover .honour-cta svg {
   margin-bottom: 1.1rem;
 }
 .skill-group h3 span {
-  color: var(--lime);
+  color: var(--accent);
   margin-right: 0.4rem;
 }
 .skill-group ul {
@@ -1063,15 +1110,15 @@ a.honour:hover .honour-cta svg {
   transition: opacity 0.3s, background 0.3s, color 0.3s, border-color 0.3s, transform 0.3s var(--ease);
 }
 .skill-group li:hover {
-  border-color: var(--lime);
+  border-color: var(--accent);
 }
 .skills.is-focused li {
   opacity: 0.25;
 }
 .skills.is-focused li.is-lit {
   opacity: 1;
-  background: var(--lime);
-  border-color: var(--lime);
+  background: var(--accent);
+  border-color: var(--accent);
   color: var(--bg);
   font-weight: 600;
   transform: translateY(-2px);
@@ -1086,7 +1133,7 @@ a.honour:hover .honour-cta svg {
   gap: 2rem;
   margin-inline: -13px;
   padding: clamp(4rem, 9vw, 7rem) calc(var(--pad) + 13px);
-  background: var(--lime);
+  background: var(--accent);
   color: var(--bg);
 }
 .cta-title {
@@ -1126,7 +1173,7 @@ a.honour:hover .honour-cta svg {
 }
 .flink:hover {
   color: var(--fg);
-  text-decoration-color: var(--lime);
+  text-decoration-color: var(--accent);
 }
 .footer-end {
   align-items: flex-end;
@@ -1179,5 +1226,14 @@ a.honour:hover .honour-cta svg {
 @media (max-width: 640px) {
   .honour {
     min-height: 0;
+  }
+}
+
+@media (max-width: 900px) {
+  .stamp-caption {
+    gap: 0.5rem;
+    font-size: 0.5rem;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
   }
 }

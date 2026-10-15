@@ -14,7 +14,7 @@ const items = [
 export function Logo({ size = 38 }: { size?: number }) {
   return (
     <svg className="logo" width={size} height={size} viewBox="0 0 40 40" aria-hidden="true">
-      <rect width="40" height="40" rx="9" fill="var(--lime)" />
+      <rect width="40" height="40" rx="9" data-ac="" />
       <text x="20" y="26.5" textAnchor="middle" fontFamily="var(--font-archivo), sans-serif" fontWeight="900" fontSize="17" fill="var(--bg)" style={{ fontVariationSettings: '"wdth" 125' }}>
         PS
       </text>

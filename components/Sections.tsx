@@ -108,15 +108,11 @@ export function Honours() {
               <span className="honour-tag">{h.tag}</span>
               <span className="honour-title">{h.title}</span>
               <span className="honour-desc">{h.desc}</span>
-              <span className="honour-cta">
-                {h.href ? (
-                  <>
-                    View certificate <ArrowUpRight />
-                  </>
-                ) : (
-                  'Granted · Govt. of India'
-                )}
-              </span>
+              {h.href && (
+                <span className="honour-cta">
+                  {h.cta ?? 'View certificate'} <ArrowUpRight />
+                </span>
+              )}
             </>
           )
           const style = { '--i': i } as React.CSSProperties
@@ -169,7 +165,7 @@ export function Footer() {
       </div>
       <div className="footer-col footer-end">
         <p>© 2026 Parbinder Singh.</p>
-        <p>Jammu, J&amp;K, India · <span className="lime">built from scratch</span>.</p>
+        <p>Jammu, J&amp;K, India · <span className="accent">built from scratch</span>.</p>
       </div>
     </footer>
   )

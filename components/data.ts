@@ -78,7 +78,7 @@ export const experience = [
   },
 ]
 
-export const honours: { tag: string; title: string; desc: string; href?: string }[] = [
+export const honours: { tag: string; title: string; desc: string; href?: string; cta?: string }[] = [
   {
     tag: '1st place · 2025',
     title: 'Hacktack25',
@@ -95,6 +95,8 @@ export const honours: { tag: string; title: string; desc: string; href?: string 
     tag: 'Patent · 2025',
     title: 'Design Patent 450458-001',
     desc: 'Granted for the sensor-based Smart Irrigation Device, with team ShivShakti.',
+    href: 'https://drive.google.com/file/d/169--X2yI3_mfc1qauxKwpEYGwO-fSO93/view?usp=sharing',
+    cta: 'View patent',
   },
   {
     tag: 'NCC · 2023 – 26',
