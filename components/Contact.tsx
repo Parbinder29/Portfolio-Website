@@ -1,31 +1,31 @@
-'use client'
+import { Seal } from './Navbar'
+import { links } from './data'
 
 export default function Contact() {
   return (
-    <section id="contact" className="section-padding" style={{ padding: '6rem 5rem', textAlign: 'center' }}>
-      <h2 style={{ fontSize: '2.5rem', fontWeight: 'bold', marginBottom: '1rem' }}>
-        Get In <span style={{ color: '#a855f7' }}>Touch</span>
-      </h2>
-      <p style={{ color: '#6b7280', marginBottom: '2rem', maxWidth: '400px', margin: '0 auto 2rem' }}>
-        Open to internships, collaborations, and interesting projects. Let's connect!
-      </p>
-      <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-        <a href="mailto:parbinders593@gmail.com" style={{ backgroundColor: '#9333ea', color: 'white', padding: '0.75rem 2rem', borderRadius: '999px', textDecoration: 'none', fontWeight: 600 }}>
-          Email Me
+    <footer id="contact" className="contact">
+      <span className="contact-kanji" aria-hidden="true">縁</span>
+      <div className="contact-inner" data-reveal>
+        <p className="section-romaji">五 · en · connection</p>
+        <h2 className="contact-title">
+          Let&rsquo;s make something <em>worth remembering</em>.
+        </h2>
+        <p className="section-lede">Open to internships, research collaborations and interesting problems.</p>
+        <a className="contact-mail" href={`mailto:${links.email}`}>
+          {links.email}
+          <span aria-hidden="true">→</span>
         </a>
-        <a href="https://linkedin.com/in/parbinder-singh-323792357" target="_blank" rel="noopener noreferrer" style={{ border: '1px solid #9333ea', color: '#a855f7', padding: '0.75rem 2rem', borderRadius: '999px', textDecoration: 'none' }}>
-          LinkedIn ↗
-        </a>
-        <a href="https://github.com/YOUR_GITHUB_USERNAME" target="_blank" rel="noopener noreferrer" style={{ border: '1px solid #374151', color: '#9ca3af', padding: '0.75rem 2rem', borderRadius: '999px', textDecoration: 'none' }}>
-          GitHub ↗
-        </a>
-        <a href="tel:+918899626090" style={{ border: '1px solid #374151', color: '#9ca3af', padding: '0.75rem 2rem', borderRadius: '999px', textDecoration: 'none' }}>
-          +91-8899626090
-        </a>
+        <div className="contact-links">
+          <a href={links.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+          <a href={links.github} target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+          <a href={links.leetcode} target="_blank" rel="noopener noreferrer">LeetCode ↗</a>
+          <a href={`tel:${links.phone.replace(/-/g, '')}`}>{links.phone}</a>
+        </div>
       </div>
-      <p style={{ marginTop: '4rem', color: '#374151', fontSize: '0.85rem' }}>
-        © 2026 Parbinder Singh · Jammu, J&K, India
-      </p>
-    </section>
+      <div className="foot">
+        <Seal size={30} />
+        <span>© 2026 Parbinder Singh · Jammu, J&amp;K, India</span>
+      </div>
+    </footer>
   )
 }
